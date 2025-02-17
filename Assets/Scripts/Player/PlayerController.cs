@@ -20,7 +20,7 @@ public class PlayerController : MonoBehaviour
         else if (Input.GetKey(KeyCode.RightArrow))
             this.transform.position = SteeringPosition(true);
 
-        if (pos.z > 75.0f)
+        if (pos.z > 137.5f)
             pos.z = 0.0f;
 
         road.transform.position = pos;
