@@ -5,6 +5,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float steeringSpeed;
     [SerializeField] float speed;
     [SerializeField] GameObject road;
+    [SerializeField] GameObject road_left;
+    [SerializeField] GameObject props;
     float forwardSpeed;
     bool isRoadRestarted = false;
 
@@ -32,6 +34,7 @@ public class PlayerController : MonoBehaviour
             pos.z = 0.0f;
 
         road.transform.position = pos;
+        MoveProps();
     }
 
     private Vector3 SteeringPosition(bool steerRight)
@@ -39,6 +42,17 @@ public class PlayerController : MonoBehaviour
         Vector3 pos = this.transform.position;
         pos.x += this.steeringSpeed * Time.deltaTime * (steerRight ? -1 : 1);
         return pos;
+    }
+
+    private void MoveProps()
+    {
+        foreach (Transform prop in props.transform)
+        {
+            Vector3 pos = prop.transform.position;
+            pos.z += this.forwardSpeed * Time.deltaTime;
+
+            prop.transform.position = pos;
+        }
     }
 
     public bool IsRoadRestarted() => this.isRoadRestarted;
