@@ -2,15 +2,16 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField] float steeringSpeed = 1.0f;
+    [SerializeField] float steeringSpeed;
+    [SerializeField] float speed;
     [SerializeField] GameObject road;
     float forwardSpeed;
 
     // Update is called once per frame
     void Update()
     {
-
-        this.forwardSpeed = Input.GetKey(KeyCode.UpArrow) ? 500.0f : 200.0f;
+        this.forwardSpeed = Input.GetKey(KeyCode.UpArrow) ? speed * 3 : speed;
+        this.forwardSpeed = Input.GetKey(KeyCode.DownArrow) ? speed / 2 : speed;
         Vector3 pos = road.transform.position;
         pos.z += this.forwardSpeed * Time.deltaTime;
 
