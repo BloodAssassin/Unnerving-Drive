@@ -6,21 +6,29 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float speed;
     [SerializeField] GameObject road;
     float forwardSpeed;
+    bool isRoadRestarted = false;
 
     // Update is called once per frame
     void Update()
     {
-        this.forwardSpeed = Input.GetKey(KeyCode.UpArrow) ? speed * 3 : speed;
-        this.forwardSpeed = Input.GetKey(KeyCode.DownArrow) ? speed / 2 : speed;
+        if (Input.GetKey(KeyCode.UpArrow))
+            this.forwardSpeed += this.speed * Time.deltaTime;
+        else if (Input.GetKey(KeyCode.DownArrow))
+            this.forwardSpeed -= this.speed * Time.deltaTime;
+
+        this.forwardSpeed = Mathf.Clamp(this.forwardSpeed, 50.0f, 100.0f);
+
         Vector3 pos = road.transform.position;
         pos.z += this.forwardSpeed * Time.deltaTime;
 
-        if (Input.GetKey(KeyCode.LeftArrow))
-            this.transform.position = SteeringPosition(false);
-        else if (Input.GetKey(KeyCode.RightArrow))
-            this.transform.position = SteeringPosition(true);
+        this.isRoadRestarted = pos.z > 137.5f;
 
-        if (pos.z > 137.5f)
+        if (Input.GetKey(KeyCode.LeftArrow))
+            this.transform.position = this.SteeringPosition(false);
+        else if (Input.GetKey(KeyCode.RightArrow))
+            this.transform.position = this.SteeringPosition(true);
+
+        if (this.isRoadRestarted)
             pos.z = 0.0f;
 
         road.transform.position = pos;
@@ -32,4 +40,6 @@ public class PlayerController : MonoBehaviour
         pos.x += this.steeringSpeed * Time.deltaTime * (steerRight ? -1 : 1);
         return pos;
     }
+
+    public bool IsRoadRestarted() => this.isRoadRestarted;
 }
