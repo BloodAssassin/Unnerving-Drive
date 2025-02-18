@@ -21,47 +21,31 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        stopLights.SetActive(false);
-
+        this.stopLights.SetActive(Input.GetKey(KeyCode.DownArrow));
         if (Input.GetKey(KeyCode.UpArrow))
-        {
             this.forwardSpeed += this.speed * Time.deltaTime;
-        }
         else if (Input.GetKey(KeyCode.DownArrow))
-        {
             this.forwardSpeed -= this.speed * Time.deltaTime;
-            stopLights.SetActive(true);
-        }
 
         this.forwardSpeed = Mathf.Clamp(this.forwardSpeed, minSpeed, maxSpeed);
 
         // Adjust steering speed
-        currentSteeringSpeed = steeringSpeed * Mathf.Pow(forwardSpeed / maxSpeed, 0.8f);
+        this.currentSteeringSpeed = this.steeringSpeed * Mathf.Pow(this.forwardSpeed / this.maxSpeed, 0.8f);
 
-        Vector3 pos = road.transform.position;
+        Vector3 pos = this.road.transform.position;
         pos.z += this.forwardSpeed * Time.deltaTime;
 
         this.isRoadRestarted = pos.z > 137.5f;
 
-        steerLeft = steerRight = false;
-
         if (Input.GetKey(KeyCode.LeftArrow))
-        {
-            steerLeft = true;
-            this.transform.position = this.SteeringPosition(steerRight);
-        }
+            this.transform.position = this.SteeringPosition(false);
         else if (Input.GetKey(KeyCode.RightArrow))
-        {
-            steerRight = true;
-            this.transform.position = this.SteeringPosition(steerRight);
-        }
-
+            this.transform.position = this.SteeringPosition(true);
 
         if (this.isRoadRestarted)
-            pos.z = 0.0f;
+            pos.z = -25.0f;
 
-        road.transform.position = pos;
-        MoveProps();
+        this.road.transform.position = pos;
     }
 
     private Vector3 SteeringPosition(bool steerRight)
@@ -69,17 +53,6 @@ public class PlayerController : MonoBehaviour
         Vector3 pos = this.transform.position;
         pos.x += this.currentSteeringSpeed * Time.deltaTime * (steerRight ? -1 : 1);
         return pos;
-    }
-
-    private void MoveProps()
-    {
-        foreach (Transform prop in props.transform)
-        {
-            Vector3 pos = prop.transform.position;
-            pos.z += this.forwardSpeed * Time.deltaTime;
-
-            prop.transform.position = pos;
-        }
     }
 
     public bool IsRoadRestarted() => this.isRoadRestarted;
