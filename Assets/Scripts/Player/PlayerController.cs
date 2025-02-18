@@ -2,33 +2,60 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    public float maxSpeed;
+    public float minSpeed;
+
     [SerializeField] float steeringSpeed;
     [SerializeField] float speed;
+
+    [SerializeField] GameObject stopLights;
     [SerializeField] GameObject road;
-    [SerializeField] GameObject road_left;
     [SerializeField] GameObject props;
-    float forwardSpeed;
+
+    [HideInInspector] public bool steerLeft, steerRight;
+    [HideInInspector] public float forwardSpeed;
+
+    float currentSteeringSpeed;
     bool isRoadRestarted = false;
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKey(KeyCode.UpArrow))
-            this.forwardSpeed += this.speed * Time.deltaTime;
-        else if (Input.GetKey(KeyCode.DownArrow))
-            this.forwardSpeed -= this.speed * Time.deltaTime;
+        stopLights.SetActive(false);
 
-        this.forwardSpeed = Mathf.Clamp(this.forwardSpeed, 50.0f, 100.0f);
+        if (Input.GetKey(KeyCode.UpArrow))
+        {
+            this.forwardSpeed += this.speed * Time.deltaTime;
+        }
+        else if (Input.GetKey(KeyCode.DownArrow))
+        {
+            this.forwardSpeed -= this.speed * Time.deltaTime;
+            stopLights.SetActive(true);
+        }
+
+        this.forwardSpeed = Mathf.Clamp(this.forwardSpeed, minSpeed, maxSpeed);
+
+        // Adjust steering speed
+        currentSteeringSpeed = steeringSpeed * Mathf.Pow(forwardSpeed / maxSpeed, 0.8f);
 
         Vector3 pos = road.transform.position;
         pos.z += this.forwardSpeed * Time.deltaTime;
 
         this.isRoadRestarted = pos.z > 137.5f;
 
+        steerLeft = steerRight = false;
+
         if (Input.GetKey(KeyCode.LeftArrow))
-            this.transform.position = this.SteeringPosition(false);
+        {
+            steerLeft = true;
+            this.transform.position = this.SteeringPosition(steerRight);
+        }
         else if (Input.GetKey(KeyCode.RightArrow))
-            this.transform.position = this.SteeringPosition(true);
+        {
+            steerRight = true;
+            this.transform.position = this.SteeringPosition(steerRight);
+        }
+
 
         if (this.isRoadRestarted)
             pos.z = 0.0f;
@@ -40,7 +67,7 @@ public class PlayerController : MonoBehaviour
     private Vector3 SteeringPosition(bool steerRight)
     {
         Vector3 pos = this.transform.position;
-        pos.x += this.steeringSpeed * Time.deltaTime * (steerRight ? -1 : 1);
+        pos.x += this.currentSteeringSpeed * Time.deltaTime * (steerRight ? -1 : 1);
         return pos;
     }
 
