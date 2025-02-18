@@ -4,11 +4,14 @@ public class PlayerController : MonoBehaviour
 {
     public float maxSpeed;
     public float minSpeed;
+
     [SerializeField] float steeringSpeed;
     [SerializeField] float speed;
+
+    [SerializeField] GameObject stopLights;
     [SerializeField] GameObject road;
-    //[SerializeField] GameObject road_left;
     [SerializeField] GameObject props;
+
     [HideInInspector] public bool steerLeft, steerRight;
     [HideInInspector] public float forwardSpeed;
 
@@ -18,10 +21,17 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        stopLights.SetActive(false);
+
         if (Input.GetKey(KeyCode.UpArrow))
+        {
             this.forwardSpeed += this.speed * Time.deltaTime;
+        }
         else if (Input.GetKey(KeyCode.DownArrow))
+        {
             this.forwardSpeed -= this.speed * Time.deltaTime;
+            stopLights.SetActive(true);
+        }
 
         this.forwardSpeed = Mathf.Clamp(this.forwardSpeed, minSpeed, maxSpeed);
 

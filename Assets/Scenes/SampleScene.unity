@@ -2107,6 +2107,7 @@ MonoBehaviour:
   minSpeed: 50
   steeringSpeed: 20
   speed: 100
+  stopLights: {fileID: 380090453}
   road: {fileID: 1192242123}
   props: {fileID: 1798136059}
   steerLeft: 0
