@@ -36,7 +36,7 @@ public class PlayerController : MonoBehaviour
         this.forwardSpeed = Mathf.Clamp(this.forwardSpeed, minSpeed, maxSpeed);
 
         // Adjust steering speed
-        currentSteeringSpeed = steeringSpeed * Mathf.Pow(forwardSpeed / maxSpeed, 0.2f);
+        currentSteeringSpeed = steeringSpeed * Mathf.Pow(forwardSpeed / maxSpeed, 0.8f);
 
         Vector3 pos = road.transform.position;
         pos.z += this.forwardSpeed * Time.deltaTime;
