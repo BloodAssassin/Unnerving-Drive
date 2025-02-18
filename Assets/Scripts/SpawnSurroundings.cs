@@ -5,7 +5,7 @@ public class SpawnSurroundings : MonoBehaviour
 {
     [SerializeField] GameObject[] objects;
     [SerializeField] PlayerController playerRef;
-    [SerializeField] Transform playerTransform;
+    [SerializeField] Vector2 XZSize;
     List<GameObject> surroundingObjects = new();
 
     void Update()
@@ -14,10 +14,11 @@ public class SpawnSurroundings : MonoBehaviour
             return;
 
         // Destroy When Distanced
-        CleanProps();
+        foreach (var obj in this.surroundingObjects)
+            Destroy(obj);
 
-        SpawnObject();
-
+        for (int i = 0; i < Random.Range(2, 5); i++)
+            SpawnObject();
     }
 
     private void SpawnObject()
@@ -34,16 +35,5 @@ public class SpawnSurroundings : MonoBehaviour
 
         this.surroundingObjects.Clear();
         this.surroundingObjects.Add(instance);
-    }
-
-    private void CleanProps()
-    {
-        foreach (var obj in surroundingObjects)
-        {
-            if (Vector3.Distance(playerTransform.position, obj.transform.position) > 5.0f)
-            {
-                DestroyImmediate(obj, true);
-            }
-        }
     }
 }
