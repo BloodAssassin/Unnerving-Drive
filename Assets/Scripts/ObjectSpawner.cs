@@ -58,6 +58,7 @@ public class ObjectSpawner : MonoBehaviour
             z = Random.Range(-40.0f, 10.0f)
         };
 
-        Instantiate(this.obstacles[Random.Range(0, this.obstacles.Length)], position, Quaternion.identity, this.transform);
+        // Out of Range Error!
+        //Instantiate(this.obstacles[Random.Range(0, this.obstacles.Length)], position, Quaternion.identity, this.transform);
     }
 }

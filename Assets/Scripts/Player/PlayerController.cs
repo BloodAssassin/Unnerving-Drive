@@ -37,10 +37,20 @@ public class PlayerController : MonoBehaviour
 
         this.isRoadRestarted = pos.z > 137.5f;
 
+        // Car Tilt
+        steerLeft = steerRight = false;
+
+        // Turning
         if (Input.GetKey(KeyCode.LeftArrow))
+        {
             this.transform.position = this.SteeringPosition(false);
+            steerLeft = true;
+        }
         else if (Input.GetKey(KeyCode.RightArrow))
+        {
             this.transform.position = this.SteeringPosition(true);
+            steerRight = true;
+        }
 
         if (this.isRoadRestarted)
             pos.z = -25.0f;
