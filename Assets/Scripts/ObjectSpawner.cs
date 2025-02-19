@@ -54,11 +54,13 @@ public class ObjectSpawner : MonoBehaviour
     {
         Vector3 position = new()
         {
-            x = -4.5f + (9.0f * Random.Range(0, 2)), // Depending on a value (either 0 or 1), it will be spawned on the left or right side of the road
+            // Depending on a value (either 0 or 1), it will be spawned on the left or right side of the road
+            x = -4.5f + (9.0f * Random.Range(0, 2)),
+
             z = Random.Range(-40.0f, 10.0f)
         };
 
         // Out of Range Error!
-        //Instantiate(this.obstacles[Random.Range(0, this.obstacles.Length)], position, Quaternion.identity, this.transform);
+        Instantiate(this.obstacles[Random.Range(0, this.obstacles.Length)], position, Quaternion.identity, this.transform);
     }
 }
