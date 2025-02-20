@@ -9,29 +9,48 @@ public class Volume : MonoBehaviour
     [SerializeField] List<Texture> audioImages;
 
     private float lastVolume;
+    private float mutedVolume;
 
     void Start()
     {
+        AudioListener.volume = PlayerPrefs.GetFloat("Volume");
+
         lastVolume = AudioListener.volume;
+        mutedVolume = lastVolume;
+        slider.value = lastVolume;
     }
 
     void Update()
     {
         AudioListener.volume = slider.value;
         UpdateIcon();
+
+        // Save Volume
+        if (lastVolume != AudioListener.volume)
+        {
+            PlayerPrefs.SetFloat("Volume", AudioListener.volume);
+            lastVolume = AudioListener.volume;
+        }
     }
 
     public void Mute()
     {
         if (slider.value > 0)
         {
-            lastVolume = slider.value;
+            mutedVolume = slider.value;
             slider.value = 0;
+        }
+        else if (mutedVolume == 0)
+        {
+            slider.value = 1;
+            mutedVolume = 1;
         }
         else
         {
-            slider.value = lastVolume;
+            slider.value = mutedVolume;
         }
+
+        PlayerPrefs.SetFloat("Volume", AudioListener.volume);
     }
 
     private void UpdateIcon()
