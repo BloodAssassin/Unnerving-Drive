@@ -1,3 +1,4 @@
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -18,16 +19,42 @@ public class PlayerController : MonoBehaviour
     float currentSteeringSpeed;
     bool isRoadRestarted = false;
 
-    // Update is called once per frame
+    bool upArrowWasPressed = false;
+    bool downArrowWasPressed = false;
+
+    void Start() => this.forwardSpeed = this.speed;
+
     void Update()
     {
-        this.stopLights.SetActive(Input.GetKey(KeyCode.DownArrow));
-        if (Input.GetKey(KeyCode.UpArrow))
-            this.forwardSpeed += this.speed * Time.deltaTime;
-        else if (Input.GetKey(KeyCode.DownArrow))
-            this.forwardSpeed -= this.speed * Time.deltaTime;
+        bool upArrowPressed = Input.GetKey(KeyCode.UpArrow);
+        bool downArrowPressed = Input.GetKey(KeyCode.DownArrow);
 
-        this.forwardSpeed = Mathf.Clamp(this.forwardSpeed, minSpeed, maxSpeed);
+        this.stopLights.SetActive(downArrowPressed);
+        if (upArrowPressed)
+        {
+            this.forwardSpeed += this.speed * Time.deltaTime;
+            this.forwardSpeed = Mathf.Clamp(this.forwardSpeed, this.speed, this.maxSpeed);
+            this.upArrowWasPressed = true;
+        }
+        else if (downArrowPressed)
+        {
+            this.forwardSpeed -= this.speed * Time.deltaTime;
+            this.forwardSpeed = Mathf.Clamp(this.forwardSpeed, this.minSpeed, this.speed);
+            this.downArrowWasPressed = true;
+        }
+        else
+        {
+            if (this.upArrowWasPressed)
+            {
+                this.forwardSpeed -= this.speed * Time.deltaTime;
+                this.upArrowWasPressed = this.forwardSpeed > this.speed;
+            }
+            else if (this.downArrowWasPressed)
+            {
+                this.forwardSpeed += this.speed * Time.deltaTime;
+                this.downArrowWasPressed = this.forwardSpeed < this.speed;
+            }
+        }
 
         // Adjust steering speed
         this.currentSteeringSpeed = this.steeringSpeed * Mathf.Pow(this.forwardSpeed / this.maxSpeed, 0.8f);

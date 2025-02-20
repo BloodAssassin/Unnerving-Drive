@@ -41,7 +41,7 @@ public class ObjectSpawner : MonoBehaviour
         foreach (var obj in this.surroundingObjects)
         {
             // This prevents the spawning of new objects if they're too close to each other
-            if (Vector3.Distance(obj.transform.position, newPosition) > 33.0f)
+            if (Vector3.Distance(obj.transform.position, newPosition) < 33.0f)
                 return;
         }
 

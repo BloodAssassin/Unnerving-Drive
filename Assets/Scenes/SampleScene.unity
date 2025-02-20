@@ -2513,7 +2513,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 921129a38d3d0cb499a822264beb94e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxSpeed: 100
+  maxSpeed: 150
   minSpeed: 50
   steeringSpeed: 20
   speed: 100
@@ -4285,7 +4285,6 @@ Transform:
   - {fileID: 144865736}
   - {fileID: 642898931}
   - {fileID: 825367424}
-  - {fileID: 1212222459}
   m_Father: {fileID: 1192242124}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1070876214
@@ -4876,55 +4875,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1198673947}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1 &1212222458
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1212222459}
-  - component: {fileID: 1212222460}
-  m_Layer: 0
-  m_Name: ObjectSpawner
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1212222459
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1212222458}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 16.47, y: 46.07823, z: -40.7}
-  m_LocalScale: {x: 1, y: 1, z: 0.33333334}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 988503373}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1212222460
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1212222458}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 061c2152cd87b28489cdad585120e312, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  objects:
-  - {fileID: 5743828424719072249, guid: 4d2ddceca7cf22a40b5e057ba049dc66, type: 3}
-  - {fileID: 2444322821583412841, guid: c06aa0ab30720304b8e1941b743df0bb, type: 3}
-  obstacles: []
-  playerRef: {fileID: 478793944}
 --- !u!1 &1217331612
 GameObject:
   m_ObjectHideFlags: 0
@@ -7260,7 +7210,7 @@ AudioSource:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1898356652}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: d1947c09329ab9a4f9b46ac5039d8db9, type: 3}
