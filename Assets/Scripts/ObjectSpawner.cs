@@ -61,6 +61,6 @@ public class ObjectSpawner : MonoBehaviour
         };
 
         // Out of Range Error!
-        Instantiate(this.obstacles[Random.Range(0, this.obstacles.Length)], position, Quaternion.identity, this.transform);
+        //Instantiate(this.obstacles[Random.Range(0, this.obstacles.Length)], position, Quaternion.identity, this.transform);
     }
 }
