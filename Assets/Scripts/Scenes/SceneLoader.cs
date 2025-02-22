@@ -53,21 +53,24 @@ public class SceneLoader : MonoBehaviour
                 LoadScene("DesertRoad_2");
                 break;
             case 3:
-                LoadScene("RainyForest");
+                LoadScene("DesertRoad_3");
                 break;
             case 4:
-                LoadScene("RainyForest_2");
+                LoadScene("RainyForest");
                 break;
             case 5:
-                LoadScene("SnowyArea");
+                LoadScene("RainyForest_2");
                 break;
             case 6:
-                LoadScene("SnowyArea_2");
+                LoadScene("SnowyArea");
                 break;
             case 7:
-                LoadScene("MeteorSite");
+                LoadScene("SnowyArea_2");
                 break;
             case 8:
+                LoadScene("MeteorSite");
+                break;
+            case 9:
                 LoadScene("EndScene");
                 break;
             default:
@@ -86,20 +89,23 @@ public class SceneLoader : MonoBehaviour
             case "DesertRoad_2":
                 level = 2;
                 break;
-            case "RainyForest":
+            case "DesertRoad_3":
                 level = 3;
                 break;
-            case "RainyForest_2":
+            case "RainyForest":
                 level = 4;
                 break;
-            case "SnowyArea":
+            case "RainyForest_2":
                 level = 5;
                 break;
-            case "SnowyArea_2":
+            case "SnowyArea":
                 level = 6;
                 break;
-            case "MeteorSite":
+            case "SnowyArea_2":
                 level = 7;
+                break;
+            case "MeteorSite":
+                level = 8;
                 break;
             case "EndScene":
                 level = 1;
