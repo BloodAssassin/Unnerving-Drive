@@ -33,6 +33,7 @@ public class DialogueSystem : MonoBehaviour
 
     private bool sentenceFinished = false;
     private bool skipSentence = false;
+    private bool inDialogue = false;
 
     void Start()
     {
@@ -46,6 +47,16 @@ public class DialogueSystem : MonoBehaviour
 
     void Update()
     {
+        Interact();
+    }
+
+    private void Interact()
+    {
+        if (inDialogue == false)
+        {
+            return;
+        }
+
         // Click
         if (Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.Space))
         {
@@ -84,6 +95,7 @@ public class DialogueSystem : MonoBehaviour
             canvasOpacity.alpha = val;
         });
 
+        inDialogue = true;
         this.index = index;
         FirstSentence();
     }
@@ -91,6 +103,7 @@ public class DialogueSystem : MonoBehaviour
     private void EndDialogue()
     {
         textField.text = "";
+        inDialogue = false;
         indicator.SetActive(false);
         portrait.GetComponent<CanvasGroup>().alpha = 0f;
 

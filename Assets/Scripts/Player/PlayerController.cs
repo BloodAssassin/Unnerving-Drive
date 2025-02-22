@@ -1,4 +1,3 @@
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -26,8 +25,8 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        bool upArrowPressed = Input.GetKey(KeyCode.UpArrow);
-        bool downArrowPressed = Input.GetKey(KeyCode.DownArrow);
+        bool upArrowPressed = Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.W);
+        bool downArrowPressed = Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.S);
 
         this.stopLights.SetActive(downArrowPressed);
         if (upArrowPressed)
@@ -68,12 +67,12 @@ public class PlayerController : MonoBehaviour
         steerLeft = steerRight = false;
 
         // Turning
-        if (Input.GetKey(KeyCode.LeftArrow))
+        if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A))
         {
             this.transform.position = this.SteeringPosition(false);
             steerLeft = true;
         }
-        else if (Input.GetKey(KeyCode.RightArrow))
+        else if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D))
         {
             this.transform.position = this.SteeringPosition(true);
             steerRight = true;
