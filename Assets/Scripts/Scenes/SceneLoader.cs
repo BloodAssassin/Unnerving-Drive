@@ -5,20 +5,25 @@ public class SceneLoader : MonoBehaviour
 {
     [SerializeField] CanvasGroup sceneFade;
     public static bool gamePaused;
+    public static int level = 1;
 
     void Start()
     {
         FadeScene();
+
+        if (SceneManager.GetActiveScene().name == "MainMenu")
+        {
+            level = 1;
+        }
     }
 
     private void FadeScene()
     {
         sceneFade.alpha = 1.0f;
 
-        // Wait 0.2s
-        LeanTween.value(gameObject, 0f, 1.0f, 0.2f).setOnComplete(() =>
+        LeanTween.value(gameObject, 0f, 1.0f, 1f).setOnComplete(() =>
         {
-            LeanTween.value(gameObject, sceneFade.alpha, 0f, 0.4f).setOnUpdate((float val) =>
+            LeanTween.value(gameObject, sceneFade.alpha, 0f, 1f).setOnUpdate((float val) =>
             {
                 sceneFade.alpha = val;
             });
@@ -29,7 +34,7 @@ public class SceneLoader : MonoBehaviour
 
     private void LoadScene(string sceneName)
     {
-        LeanTween.value(gameObject, sceneFade.alpha, 1.0f, 0.4f).setOnUpdate((float val) =>
+        LeanTween.value(gameObject, sceneFade.alpha, 1.0f, 1f).setOnUpdate((float val) =>
         {
             sceneFade.alpha = val;
 
@@ -38,6 +43,31 @@ public class SceneLoader : MonoBehaviour
                 SceneManager.LoadScene(sceneName);
             }
         });
+    }
+
+    public void NextLevel()
+    {
+        switch (level)
+        {
+            case 1:
+                LoadScene("DesertRoad");
+                break;
+            case 2:
+                LoadScene("DesertRoad_2");
+                break;
+            case 3:
+                LoadScene("RainyForest");
+                break;
+            case 4:
+                LoadScene("RainyForest_2");
+                break;
+            case 5:
+                LoadScene("SnowyArea");
+                break;
+            case 6:
+                LoadScene("SnowyArea_2");
+                break;
+        }
     }
 
     public void Play()

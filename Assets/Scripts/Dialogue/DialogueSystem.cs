@@ -29,7 +29,8 @@ public class DialogueSystem : MonoBehaviour
     [SerializeField] TextMeshProUGUI textField;
     [SerializeField] GameObject indicator;
     [SerializeField] List<Dialogue> dialogue;
-    private int index, count;
+    private int count;
+    public int index;
 
     private bool sentenceFinished = false;
     private bool skipSentence = false;
@@ -42,7 +43,7 @@ public class DialogueSystem : MonoBehaviour
         canvasOpacity.alpha = 0f;
         portrait.GetComponent<CanvasGroup>().alpha = 0f;
 
-        StartDialogue(0);
+        StartDialogue();
     }
 
     void Update()
@@ -88,7 +89,7 @@ public class DialogueSystem : MonoBehaviour
     }
 
     // Dialogue Interface
-    public void StartDialogue(int index)
+    public void StartDialogue()
     {
         LeanTween.value(gameObject, 0f, 1f, 0.5f).setOnUpdate((float val) =>
         {
@@ -97,7 +98,6 @@ public class DialogueSystem : MonoBehaviour
 
         SceneLoader.gamePaused = true;
         inDialogue = true;
-        this.index = index;
         FirstSentence();
     }
 

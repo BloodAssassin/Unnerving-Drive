@@ -13,7 +13,10 @@ public class Route : MonoBehaviour
 
     void Update()
     {
-        UpdateRoute();
+        if (currDistance / destination < 1)
+        {
+            UpdateRoute();
+        }
     }
 
     private void UpdateRoute()
@@ -32,7 +35,8 @@ public class Route : MonoBehaviour
         // Reload scene
         if (routeSlider.value == 1)
         {
-            sceneLoader.Play();
+            SceneLoader.level++;
+            sceneLoader.NextLevel();
         }
     }
 }
