@@ -4,7 +4,7 @@ using UnityEngine.SceneManagement;
 public class SceneLoader : MonoBehaviour
 {
     [SerializeField] CanvasGroup sceneFade;
-
+    public static bool gamePaused;
 
     void Start()
     {

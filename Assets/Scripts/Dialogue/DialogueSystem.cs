@@ -95,6 +95,7 @@ public class DialogueSystem : MonoBehaviour
             canvasOpacity.alpha = val;
         });
 
+        SceneLoader.gamePaused = true;
         inDialogue = true;
         this.index = index;
         FirstSentence();
@@ -105,6 +106,7 @@ public class DialogueSystem : MonoBehaviour
         textField.text = "";
         inDialogue = false;
         indicator.SetActive(false);
+        SceneLoader.gamePaused = false;
         portrait.GetComponent<CanvasGroup>().alpha = 0f;
 
         LeanTween.value(gameObject, 1f, 0f, 0.5f).setOnUpdate((float val) =>

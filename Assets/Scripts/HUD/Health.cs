@@ -4,6 +4,7 @@ using UnityEngine.UI;
 
 public class Health : MonoBehaviour
 {
+    [SerializeField] SceneLoader sceneLoader;
     [SerializeField] PlayerController player;
     [SerializeField] GameObject pointIcon;
     [SerializeField] GameObject points;
@@ -33,6 +34,11 @@ public class Health : MonoBehaviour
         if (lastHealth != health || lastMaxHealth != maxHealth)
         {
             UpdateHealth();
+        }
+
+        if (health == 0)
+        {
+            sceneLoader.MainMenu();
         }
     }
 

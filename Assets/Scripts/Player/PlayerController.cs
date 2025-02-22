@@ -30,13 +30,13 @@ public class PlayerController : MonoBehaviour
         bool downArrowPressed = Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.S);
 
         this.stopLights.SetActive(downArrowPressed);
-        if (upArrowPressed)
+        if (upArrowPressed && SceneLoader.gamePaused == false)
         {
             this.forwardSpeed += this.speed * Time.deltaTime;
             this.forwardSpeed = Mathf.Clamp(this.forwardSpeed, this.speed, this.maxSpeed);
             this.upArrowWasPressed = true;
         }
-        else if (downArrowPressed)
+        else if (downArrowPressed && SceneLoader.gamePaused == false)
         {
             this.forwardSpeed -= this.speed * Time.deltaTime;
             this.forwardSpeed = Mathf.Clamp(this.forwardSpeed, this.minSpeed, this.speed);
