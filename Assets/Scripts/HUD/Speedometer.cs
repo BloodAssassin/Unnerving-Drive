@@ -25,18 +25,23 @@ public class Speedometer : MonoBehaviour
     {
         currRotation = (currSpeed - minSpeed) * (-180) / (maxSpeed - minSpeed) + 90;
 
-        RotateDial();
+        if (lastRotation != currRotation)
+        {
+            RotateDial();
+        }
     }
 
     private void RotateDial()
     {
         currSpeed = player.forwardSpeed;
+        lastRotation = currRotation;
 
         // Formula
         currRotation = currRotation - 40;
 
         // Apply rotation
-        dial.transform.rotation = Quaternion.Euler(0, 0, currRotation);
+        LeanTween.cancel(dial);
+        LeanTween.rotateZ(dial, currRotation, 0.1f);
 
         lastRotation = currRotation;
     }

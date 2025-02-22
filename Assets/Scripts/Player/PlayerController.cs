@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    public float health, maxHealth;
     public float maxSpeed;
     public float minSpeed;
 
