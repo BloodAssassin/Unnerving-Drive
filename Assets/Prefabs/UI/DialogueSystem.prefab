@@ -202,6 +202,70 @@ MonoBehaviour:
       character: {fileID: 21300000, guid: 8e6531712cd4af14fa03c4b9316c1c8f, type: 3}
       position: {x: 0, y: 80}
       rotation: 1
+  - lines:
+    - name: Blaise
+      sentence: Are we close?
+      character: {fileID: 21300000, guid: ddfd88f59972fcf4594ac380a4063591, type: 3}
+      position: {x: 370, y: 19}
+      rotation: 1
+    - name: Velvet
+      sentence: "Seems so. I\u2019m not entirely sure. Just feeling its aura."
+      character: {fileID: 21300000, guid: 8e6531712cd4af14fa03c4b9316c1c8f, type: 3}
+      position: {x: 0, y: 80}
+      rotation: 1
+    - name: Blaise
+      sentence: "Are those Skyline people the reason you\u2019re here?"
+      character: {fileID: 21300000, guid: ddfd88f59972fcf4594ac380a4063591, type: 3}
+      position: {x: 370, y: 19}
+      rotation: 1
+    - name: Velvet
+      sentence: No. They just appeared on the site.
+      character: {fileID: 21300000, guid: 8e6531712cd4af14fa03c4b9316c1c8f, type: 3}
+      position: {x: 0, y: 80}
+      rotation: 1
+    - name: Velvet
+      sentence: "They\u2019re not responsible for this situation happening but they
+        failed to prevent it."
+      character: {fileID: 21300000, guid: 8e6531712cd4af14fa03c4b9316c1c8f, type: 3}
+      position: {x: 0, y: 80}
+      rotation: 1
+    - name: Blaise
+      sentence: Here it comes again!
+      character: {fileID: 21300000, guid: ddfd88f59972fcf4594ac380a4063591, type: 3}
+      position: {x: 370, y: 19}
+      rotation: 1
+  - lines:
+    - name: Blaise
+      sentence: "Brrr... It\u2019s chilly now."
+      character: {fileID: 21300000, guid: ddfd88f59972fcf4594ac380a4063591, type: 3}
+      position: {x: 370, y: 19}
+      rotation: 1
+    - name: Velvet
+      sentence: "Yeah. Unfortunately, I don\u2019t possess an AC."
+      character: {fileID: 21300000, guid: 8e6531712cd4af14fa03c4b9316c1c8f, type: 3}
+      position: {x: 0, y: 80}
+      rotation: 1
+    - name: Blaise
+      sentence: "I\u2019m not that lucky..."
+      character: {fileID: 21300000, guid: ddfd88f59972fcf4594ac380a4063591, type: 3}
+      position: {x: 370, y: 19}
+      rotation: 1
+    - name: Velvet
+      sentence: Maybe you should have brought a blanket.
+      character: {fileID: 21300000, guid: 8e6531712cd4af14fa03c4b9316c1c8f, type: 3}
+      position: {x: 0, y: 80}
+      rotation: 1
+    - name: Blaise
+      sentence: How could I have possibly-
+      character: {fileID: 21300000, guid: ddfd88f59972fcf4594ac380a4063591, type: 3}
+      position: {x: 370, y: 19}
+      rotation: 1
+    - name: Blaise
+      sentence: Forget it.
+      character: {fileID: 21300000, guid: ddfd88f59972fcf4594ac380a4063591, type: 3}
+      position: {x: 370, y: 19}
+      rotation: 1
+  index: 0
 --- !u!225 &3552499633511402034
 CanvasGroup:
   m_ObjectHideFlags: 0

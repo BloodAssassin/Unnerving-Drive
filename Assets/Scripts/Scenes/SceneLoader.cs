@@ -11,10 +11,7 @@ public class SceneLoader : MonoBehaviour
     {
         FadeScene();
 
-        if (SceneManager.GetActiveScene().name == "MainMenu")
-        {
-            level = 1;
-        }
+        GetCurrentLevel();
     }
 
     private void FadeScene()
@@ -66,6 +63,49 @@ public class SceneLoader : MonoBehaviour
                 break;
             case 6:
                 LoadScene("SnowyArea_2");
+                break;
+            case 7:
+                LoadScene("MeteorSite");
+                break;
+            case 8:
+                LoadScene("EndScene");
+                break;
+            default:
+                LoadScene("MainMenu");
+                break;
+        }
+    }
+
+    private void GetCurrentLevel()
+    {
+        switch (SceneManager.GetActiveScene().name)
+        {
+            case "DesertRoad":
+                level = 1;
+                break;
+            case "DesertRoad_2":
+                level = 2;
+                break;
+            case "RainyForest":
+                level = 3;
+                break;
+            case "RainyForest_2":
+                level = 4;
+                break;
+            case "SnowyArea":
+                level = 5;
+                break;
+            case "SnowyArea_2":
+                level = 6;
+                break;
+            case "MeteorSite":
+                level = 7;
+                break;
+            case "EndScene":
+                level = 1;
+                break;
+            case "MainMenu":
+                level = 1;
                 break;
         }
     }

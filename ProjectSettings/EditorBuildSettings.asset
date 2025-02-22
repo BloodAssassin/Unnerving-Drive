@@ -26,4 +26,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/SnowyArea_2.unity
     guid: 030f6afcee774eb489214ec5921aa6fc
+  - enabled: 1
+    path: Assets/Scenes/MeteorSite.unity
+    guid: 9dd84b3e02f26d84fbccd47d3225c573
   m_configObjects: {}
