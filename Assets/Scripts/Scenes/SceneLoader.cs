@@ -42,6 +42,11 @@ public class SceneLoader : MonoBehaviour
         });
     }
 
+    public void ReloadScene()
+    {
+        LoadScene(SceneManager.GetActiveScene().name);
+    }
+
     public void NextLevel()
     {
         switch (level)
