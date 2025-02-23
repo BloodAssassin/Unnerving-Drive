@@ -30,7 +30,7 @@ public class ObjectSpawner : MonoBehaviour
 
         foreach (var obj in this.spawnedObstacles)
         {
-            if (Vector3.Distance(obj.transform.position, this.transform.position) < 150.0f)
+            if (Vector3.Distance(obj.transform.position, this.playerRef.transform.position) < 350.0f)
                 continue;
 
             Destroy(obj);
@@ -57,8 +57,9 @@ public class ObjectSpawner : MonoBehaviour
                 return;
         }
 
-        GameObject instance = Instantiate(this.objects[Random.Range(0, this.objects.Length)], this.transform);
+        GameObject instance = Instantiate(this.objects[Random.Range(0, this.objects.Length)]);
         instance.transform.position = newPosition;
+        instance.transform.parent = this.transform.parent;
         this.surroundingObjects.Add(instance);
     }
 
@@ -67,10 +68,11 @@ public class ObjectSpawner : MonoBehaviour
         Vector3 position = new()
         {
             x = -30.0f + (10.0f * Random.Range(0, 3)),
-            z = -20.0f
+            z = Random.Range(-20.0f, 0.0f)
         };
 
-        GameObject obstacle = Instantiate(this.obstacles[Random.Range(0, this.obstacles.Length - 1)], position, Quaternion.identity, this.transform);
+        GameObject obstacle = Instantiate(this.obstacles[Random.Range(0, this.obstacles.Length - 1)], this.transform);
+        obstacle.transform.position = position;
         this.spawnedObstacles.Add(obstacle);
     }
 }
