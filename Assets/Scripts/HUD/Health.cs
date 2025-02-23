@@ -15,6 +15,8 @@ public class Health : MonoBehaviour
 
     private float health, lastHealth;
     private float maxHealth, lastMaxHealth;
+    private bool dead;
+    bool loadingMainMenu;
 
     void Start()
     {
@@ -36,9 +38,16 @@ public class Health : MonoBehaviour
             UpdateHealth();
         }
 
-        if (health == 0)
+        if (health == 0 && loadingMainMenu == false)
         {
-            sceneLoader.MainMenu();
+            dead = true;
+            loadingMainMenu = true;
+        }
+
+        if (dead)
+        {
+            dead = false;
+            sceneLoader.ReloadScene();
         }
     }
 
