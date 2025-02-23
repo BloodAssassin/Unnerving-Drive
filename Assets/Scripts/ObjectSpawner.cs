@@ -70,7 +70,7 @@ public class ObjectSpawner : MonoBehaviour
             z = -20.0f
         };
 
-        GameObject obstacle = Instantiate(this.obstacles[Random.Range(0, this.obstacles.Length)], position, Quaternion.identity, this.transform);
+        GameObject obstacle = Instantiate(this.obstacles[Random.Range(0, this.obstacles.Length - 1)], position, Quaternion.identity, this.transform);
         this.spawnedObstacles.Add(obstacle);
     }
 }
