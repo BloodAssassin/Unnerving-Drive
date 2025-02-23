@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class ObjectSpawner : MonoBehaviour
@@ -5,7 +6,8 @@ public class ObjectSpawner : MonoBehaviour
     [SerializeField] GameObject[] objects;
     [SerializeField] GameObject[] obstacles;
     [SerializeField] PlayerController playerRef;
-    System.Collections.Generic.List<GameObject> surroundingObjects = new();
+    List<GameObject> surroundingObjects = new();
+    List<GameObject> spawnedObstacles = new();
     float timeSinceSpawningObstacles = 0.0f;
 
     void Update()
@@ -26,7 +28,12 @@ public class ObjectSpawner : MonoBehaviour
 
         this.surroundingObjects.Clear();
 
-        for (int i = 0; i < Random.Range(2, 5); i++)
+        foreach (var obj in this.spawnedObstacles)
+            Destroy(obj);
+
+        this.spawnedObstacles.Clear();
+
+        for (int i = 0; i < Random.Range(5, 10); i++)
             this.SpawnSideRoadObject();
     }
 
@@ -34,14 +41,14 @@ public class ObjectSpawner : MonoBehaviour
     {
         Vector3 newPosition = new()
         {
-            x = Random.Range(-40.0f, -60.0f),
-            z = Random.Range(-50.0f, 0.0f)
+            x = Random.Range(-40.0f, -55.0f),
+            z = Random.Range(-50.0f, -20.0f)
         };
 
         foreach (var obj in this.surroundingObjects)
         {
             // This prevents the spawning of new objects if they're too close to each other
-            if (Vector3.Distance(obj.transform.position, newPosition) < 33.0f)
+            if (Vector3.Distance(obj.transform.position, newPosition) < 5.0f)
                 return;
         }
 
@@ -55,12 +62,12 @@ public class ObjectSpawner : MonoBehaviour
         Vector3 position = new()
         {
             // Depending on a value (either 0 or 1), it will be spawned on the left or right side of the road
-            x = -4.5f + (9.0f * Random.Range(0, 2)),
+            x = -35.0f,
 
-            z = Random.Range(-40.0f, 10.0f)
+            z = Random.Range(10.0f, 40.0f)
         };
 
-        // Out of Range Error!
-        //Instantiate(this.obstacles[Random.Range(0, this.obstacles.Length)], position, Quaternion.identity, this.transform);
+        GameObject obstacle = Instantiate(this.obstacles[Random.Range(0, this.obstacles.Length)], position, Quaternion.identity, this.transform);
+        this.spawnedObstacles.Add(obstacle);
     }
 }
