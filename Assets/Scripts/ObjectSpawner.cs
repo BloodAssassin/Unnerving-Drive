@@ -13,7 +13,7 @@ public class ObjectSpawner : MonoBehaviour
     void Update()
     {
         this.timeSinceSpawningObstacles += Time.deltaTime;
-        if (this.timeSinceSpawningObstacles > Random.Range(5.0f, 10.0f))
+        if (this.timeSinceSpawningObstacles > Random.Range(4.0f, 8.0f))
         {
             this.SpawnObstacle();
             this.timeSinceSpawningObstacles = 0.0f;
@@ -29,7 +29,12 @@ public class ObjectSpawner : MonoBehaviour
         this.surroundingObjects.Clear();
 
         foreach (var obj in this.spawnedObstacles)
+        {
+            if (Vector3.Distance(obj.transform.position, this.transform.position) < 150.0f)
+                continue;
+
             Destroy(obj);
+        }
 
         this.spawnedObstacles.Clear();
 
@@ -61,10 +66,8 @@ public class ObjectSpawner : MonoBehaviour
     {
         Vector3 position = new()
         {
-            // Depending on a value (either 0 or 1), it will be spawned on the left or right side of the road
-            x = -35.0f,
-
-            z = Random.Range(10.0f, 40.0f)
+            x = -30.0f + (10.0f * Random.Range(0, 3)),
+            z = -20.0f
         };
 
         GameObject obstacle = Instantiate(this.obstacles[Random.Range(0, this.obstacles.Length)], position, Quaternion.identity, this.transform);

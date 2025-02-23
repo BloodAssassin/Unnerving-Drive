@@ -93,4 +93,6 @@ public class PlayerController : MonoBehaviour
     }
 
     public bool IsRoadRestarted() => this.isRoadRestarted;
+
+    private void OnTriggerEnter(Collider collision) => this.health--;
 }

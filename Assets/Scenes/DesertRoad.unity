@@ -216,7 +216,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7701601202502090284, guid: 5ab703eec562f8f4c9e982dee2963b66, type: 3}
   m_PrefabInstance: {fileID: 8109870508751971787}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1126452863}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 921129a38d3d0cb499a822264beb94e8, type: 3}
@@ -332,6 +332,32 @@ Camera:
   m_CorrespondingSourceObject: {fileID: 6920526974791755358, guid: 49602d19da23b1f46b3168ec0eac88bf, type: 3}
   m_PrefabInstance: {fileID: 6181846199389509550}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1126452863 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 226223273940527711, guid: 5ab703eec562f8f4c9e982dee2963b66, type: 3}
+  m_PrefabInstance: {fileID: 8109870508751971787}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &1126452869
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1126452863}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0.74, z: 0}
 --- !u!1 &1192242123 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2456496922765028069, guid: 8e3443554b4e6c14baaad928c98fd74e, type: 3}
@@ -1042,7 +1068,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 226223273940527711, guid: 5ab703eec562f8f4c9e982dee2963b66, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1126452869}
   m_SourcePrefab: {fileID: 100100000, guid: 5ab703eec562f8f4c9e982dee2963b66, type: 3}
 --- !u!1001 &9069588784700416348
 PrefabInstance:
@@ -1056,6 +1085,22 @@ PrefabInstance:
       propertyPath: playerRef
       value: 
       objectReference: {fileID: 478793944}
+    - target: {fileID: 1859851151084145686, guid: 8e3443554b4e6c14baaad928c98fd74e, type: 3}
+      propertyPath: obstacles.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1859851151084145686, guid: 8e3443554b4e6c14baaad928c98fd74e, type: 3}
+      propertyPath: obstacles.Array.data[0]
+      value: 
+      objectReference: {fileID: 225509682090273679, guid: aeaa2bc00863f4c4e8d6378ef51e8904, type: 3}
+    - target: {fileID: 1859851151084145686, guid: 8e3443554b4e6c14baaad928c98fd74e, type: 3}
+      propertyPath: obstacles.Array.data[1]
+      value: 
+      objectReference: {fileID: 5708160661536010117, guid: 0dce52fea9f901b4f8bc6778aea459a5, type: 3}
+    - target: {fileID: 1859851151084145686, guid: 8e3443554b4e6c14baaad928c98fd74e, type: 3}
+      propertyPath: obstacles.Array.data[2]
+      value: 
+      objectReference: {fileID: 362375275981994793, guid: 823693565030bdd46b6179b999b8aeef, type: 3}
     - target: {fileID: 2456496922765028069, guid: 8e3443554b4e6c14baaad928c98fd74e, type: 3}
       propertyPath: m_Name
       value: Road
