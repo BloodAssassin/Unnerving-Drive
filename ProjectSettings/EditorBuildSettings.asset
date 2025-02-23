@@ -32,4 +32,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/DesertRoad_3.unity
     guid: 97409c0e54482df498b0254b9e079f02
+  - enabled: 1
+    path: Assets/Scenes/EndScene.unity
+    guid: 85112cc7b13b3f34b9a389714e773bf5
   m_configObjects: {}

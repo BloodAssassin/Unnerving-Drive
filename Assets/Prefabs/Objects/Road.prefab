@@ -2817,7 +2817,8 @@ MonoBehaviour:
   - {fileID: 5752293701769642280, guid: ad70f839d2c8b2447b9acc7c2366f4b3, type: 3}
   - {fileID: 5658351668036150184, guid: 186a96d379b636e41a8f597048589a69, type: 3}
   - {fileID: 1082879965621457349, guid: 08e88c744aeef3b49ab0110d75b7c07a, type: 3}
-  obstacles: []
+  obstacles:
+  - {fileID: 1082879965621457349, guid: 08e88c744aeef3b49ab0110d75b7c07a, type: 3}
   playerRef: {fileID: 0}
 --- !u!1 &4356403197565108981
 GameObject:
