@@ -8,17 +8,9 @@ public class ObjectSpawner : MonoBehaviour
     [SerializeField] PlayerController playerRef;
     List<GameObject> surroundingObjects = new();
     List<GameObject> spawnedObstacles = new();
-    float timeSinceSpawningObstacles = 0.0f;
 
     void Update()
     {
-        this.timeSinceSpawningObstacles += Time.deltaTime;
-        if (this.timeSinceSpawningObstacles > Random.Range(4.0f, 8.0f))
-        {
-            this.SpawnObstacle();
-            this.timeSinceSpawningObstacles = 0.0f;
-        }
-
         if (!this.playerRef.IsRoadRestarted())
             return;
 
@@ -29,14 +21,11 @@ public class ObjectSpawner : MonoBehaviour
         this.surroundingObjects.Clear();
 
         foreach (var obj in this.spawnedObstacles)
-        {
-            if (Vector3.Distance(obj.transform.position, this.playerRef.transform.position) < 350.0f)
-                continue;
-
             Destroy(obj);
-        }
 
         this.spawnedObstacles.Clear();
+
+        this.SpawnObstacle();
 
         for (int i = 0; i < Random.Range(5, 10); i++)
             this.SpawnSideRoadObject();
@@ -68,11 +57,12 @@ public class ObjectSpawner : MonoBehaviour
         Vector3 position = new()
         {
             x = -30.0f + (10.0f * Random.Range(0, 3)),
-            z = Random.Range(-20.0f, 0.0f)
+            z = -50.0f
         };
 
-        GameObject obstacle = Instantiate(this.obstacles[Random.Range(0, this.obstacles.Length - 1)], this.transform);
+        GameObject obstacle = Instantiate(this.obstacles[Random.Range(0, this.obstacles.Length - 1)]);
         obstacle.transform.position = position;
+        obstacle.transform.parent = this.transform.parent;
         this.spawnedObstacles.Add(obstacle);
     }
 }

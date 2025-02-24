@@ -62,7 +62,7 @@ public class PlayerController : MonoBehaviour
         Vector3 pos = this.road.transform.position;
         pos.z += this.forwardSpeed * Time.deltaTime;
 
-        this.isRoadRestarted = pos.z > 137.5f;
+        this.isRoadRestarted = pos.z > 167.5f;
 
         // Car Tilt
         steerLeft = steerRight = false;
@@ -94,5 +94,5 @@ public class PlayerController : MonoBehaviour
 
     public bool IsRoadRestarted() => this.isRoadRestarted;
 
-    //private void OnTriggerEnter(Collider collision) => this.health--;
+    private void OnTriggerEnter(Collider collision) => this.health--;
 }

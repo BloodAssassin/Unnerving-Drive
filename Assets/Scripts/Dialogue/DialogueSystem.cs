@@ -109,10 +109,9 @@ public class DialogueSystem : MonoBehaviour
         SceneLoader.gamePaused = false;
         portrait.GetComponent<CanvasGroup>().alpha = 0f;
 
-        LeanTween.value(gameObject, 1f, 0f, 0.5f).setOnUpdate((float val) =>
-        {
-            canvasOpacity.alpha = val;
-        });
+        LeanTween.value(gameObject, 1f, 0f, 0.5f).setOnUpdate(val => canvasOpacity.alpha = val);
+        this.gameObject.SetActive(false);
+        GameObject.Find("ObjectSpawner").GetComponent<ObjectSpawner>().enabled = true;
     }
 
     private void FirstSentence()
