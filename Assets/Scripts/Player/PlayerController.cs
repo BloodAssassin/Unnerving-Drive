@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -94,5 +95,12 @@ public class PlayerController : MonoBehaviour
 
     public bool IsRoadRestarted() => this.isRoadRestarted;
 
-    private void OnTriggerEnter(Collider collision) => this.health--;
+    private void OnTriggerEnter(Collider collision)
+    {
+        this.health--;
+        if (this.health == 0)
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
+    }
 }

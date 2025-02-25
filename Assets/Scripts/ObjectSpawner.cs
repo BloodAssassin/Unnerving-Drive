@@ -35,7 +35,7 @@ public class ObjectSpawner : MonoBehaviour
     {
         Vector3 newPosition = new()
         {
-            x = Random.Range(-40.0f, -55.0f),
+            x = Random.Range(20.0f, 5.0f),
             z = Random.Range(-50.0f, -20.0f)
         };
 
@@ -56,7 +56,7 @@ public class ObjectSpawner : MonoBehaviour
     {
         Vector3 position = new()
         {
-            x = -30.0f + (10.0f * Random.Range(0, 3)),
+            x = -30.0f + (10.0f * Random.Range(0, 4)),
             z = -50.0f
         };
 

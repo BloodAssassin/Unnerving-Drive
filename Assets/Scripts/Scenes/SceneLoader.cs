@@ -58,24 +58,21 @@ public class SceneLoader : MonoBehaviour
                 LoadScene("DesertRoad_2");
                 break;
             case 3:
-                LoadScene("DesertRoad_3");
-                break;
-            case 4:
                 LoadScene("RainyForest");
                 break;
-            case 5:
+            case 4:
                 LoadScene("RainyForest_2");
                 break;
-            case 6:
+            case 5:
                 LoadScene("SnowyArea");
                 break;
-            case 7:
+            case 6:
                 LoadScene("SnowyArea_2");
                 break;
-            case 8:
+            case 7:
                 LoadScene("MeteorSite");
                 break;
-            case 9:
+            case 8:
                 LoadScene("EndScene");
                 break;
             default:
@@ -94,26 +91,23 @@ public class SceneLoader : MonoBehaviour
             case "DesertRoad_2":
                 level = 2;
                 break;
-            case "DesertRoad_3":
+            case "RainyForest":
                 level = 3;
                 break;
-            case "RainyForest":
+            case "RainyForest_2":
                 level = 4;
                 break;
-            case "RainyForest_2":
+            case "SnowyArea":
                 level = 5;
                 break;
-            case "SnowyArea":
+            case "SnowyArea_2":
                 level = 6;
                 break;
-            case "SnowyArea_2":
+            case "MeteorSite":
                 level = 7;
                 break;
-            case "MeteorSite":
-                level = 8;
-                break;
             case "EndScene":
-                level = 1;
+                level = 8;
                 break;
             case "MainMenu":
                 level = 1;
@@ -130,4 +124,6 @@ public class SceneLoader : MonoBehaviour
     {
         LoadScene("MainMenu");
     }
+
+    public void Quit() => Application.Quit();
 }
